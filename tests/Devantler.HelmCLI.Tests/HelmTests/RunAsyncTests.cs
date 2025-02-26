@@ -13,7 +13,7 @@ public class RunAsyncTests
   public async Task RunAsync_Version_ReturnsVersion()
   {
     // Act
-    var (exitCode, output) = await Helm.RunAsync(["-v"]);
+    var (exitCode, output) = await Helm.RunAsync(["version --short"]);
 
     // Assert
     Assert.Equal(0, exitCode);
