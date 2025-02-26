@@ -16,6 +16,7 @@ public class RunAsyncTests
     var (exitCode, output) = await Helm.RunAsync(["version --short"]);
 
     // Assert
+    Console.WriteLine(output.Trim());
     Assert.Equal(0, exitCode);
     Assert.Matches(@"^v\d+\.\d+\.\d+$", output.Trim());
   }
