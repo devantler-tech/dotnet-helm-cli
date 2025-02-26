@@ -11,13 +11,28 @@
 ```
 .
 ├── .github
+│   ├── scripts
 │   └── workflows
 ├── src
-│   └── Example
+│   └── Devantler.HelmCLI
+│       └── runtimes
+│           ├── linux-arm64
+│           │   └── native
+│           ├── linux-x64
+│           │   └── native
+│           ├── osx-arm64
+│           │   └── native
+│           ├── osx-x64
+│           │   └── native
+│           ├── win-arm64
+│           │   └── native
+│           └── win-x64
+│               └── native
 └── tests
-    └── Example.Tests
+    └── Devantler.HelmCLI.Tests
+        └── HelmTests
 
-7 directories
+22 directories
 ```
 <!-- readme-tree end -->
 
