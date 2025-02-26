@@ -1,0 +1,44 @@
+name: Assets
+
+on:
+  schedule:
+    - cron: "59 23 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  download-binary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: ⤵️ Get Helm binary
+        run: |
+          ./.github/scripts/get-helm-binary.sh
+      - name: Generate GitHub App Token
+        uses: tibdex/github-app-token@v2
+        id: generate-token
+        with:
+          app_id: ${{ vars.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+      - name: 🎯 Get version
+        run: |
+          BINARY_VERSION=$(./src/Devantler.HelmCLI/runtimes/linux-x64/native/helm-linux-x64 -v)
+          echo "BINARY_VERSION=$BINARY_VERSION" >> $GITHUB_ENV
+      - name: ✍🏻 Create PR
+        uses: peter-evans/create-pull-request@v7
+        env:
+          BINARY_VERSION: ${{ env.BINARY_VERSION }}
+        with:
+          commit-message: "feat: Update  Helm binary to ${{ env.BINARY_VERSION }}"
+          title: "feat: Update Helm to ${{ env.BINARY_VERSION }}"
+          body: |
+            This PR updates the Helm binary used by Devantler.HelmCLI to ${{ env.BINARY_VERSION }}.
+          branch: update-helm-binary
+          delete-branch: true
+          labels: dependencies
+          reviewers: devantler
+          assignees: devantler
+          signoff: true
+          token: ${{ steps.generate-token.outputs.token }}
+          sign-commits: true
