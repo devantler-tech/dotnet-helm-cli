@@ -36,6 +36,8 @@
 ```
 <!-- readme-tree end -->
 
+</details>
+
 A simple .NET library that embeds the Helm CLI.
 
 ## 🚀 Getting Started
