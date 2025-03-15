@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Devantler.HelmCLI/Devantler.HelmCLI.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Devantler.HelmCLI.Tests/Devantler.HelmCLI.Tests.csproj" />
+  </Folder>
+</Solution>
