@@ -15,4 +15,5 @@ jobs:
       BINARY_NAME: helm
       DOTNET_PROJECT_NAME: Devantler.HelmCLI
       SCRIPT_PATH: scripts/get-helm-binary.sh
+      VERSION_ARGS: version --short
 
