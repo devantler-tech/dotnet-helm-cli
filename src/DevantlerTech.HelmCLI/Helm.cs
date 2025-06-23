@@ -15,7 +15,7 @@ public static class Helm
   {
     get
     {
-      string binaryName = "helm";
+      string binaryName = OperatingSystem.IsWindows() ? "helm.exe" : "helm";
       string? pathEnv = Environment.GetEnvironmentVariable("PATH");
 
       if (!string.IsNullOrEmpty(pathEnv))
