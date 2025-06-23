@@ -17,10 +17,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     if: github.event.pull_request.draft == false
     steps:
-      - name: Install Helm CLI
-        uses: jaxxstorm/action-install-gh-release@v2.1.0
-        with:
-          repo: helm/helm
+      - uses: azure/setup-helm@v4.3.0
       - name: Test .NET solution or project
         uses: devantler-tech/dotnet-test-action@main
         with:
